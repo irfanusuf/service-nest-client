@@ -1,2 +1,44 @@
+.profile-container{
 
+
+width: 1000px;
+height: 1000px;
+margin: auto;
+background-color: aliceblue;
+padding: 30px;
+margin-top: 20px;
+margin-bottom: 20px;
+
+
+>.profile-pic{
+    width: 75px;
+    height: 75px;
+    border: 1px solid orange;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    >img{
+        width: 100%;
+        border-radius: 100%;
+
+    }
+
+  
+}
+
+>input{
+    width: 85px;
+}
+
+
+>.btn{
+margin-left: 10px;
+
+}
+
+
+
+}
 

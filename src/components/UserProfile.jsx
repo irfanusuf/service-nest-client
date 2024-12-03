@@ -17,9 +17,10 @@ const UserProfile = () => {
   return (
     <div className="container">
       <div className="profile-container">
+
         <div className="profile-pic">
-          {" "}
-          <img src={user.profilepicUrl} alt={user.username} width={200} />{" "}
+          
+          <img src={user.profilepicUrl} alt={user.username} width={200} />
         </div>
 
         <input
@@ -41,19 +42,49 @@ const UserProfile = () => {
 
         <button className="btn">  Activate account </button>
         <button className="btn"> Add service  </button>
-        <h2> username</h2>
+        <h2> {user.username} </h2>
 
         <h3> Live Location </h3>
 
         <h2>Description</h2>
 
-        <h2> Reviews and  Ratings (4)</h2>
+        <h2> Reviews and  Ratings ({user.reviews && user.reviews.length})</h2>
 
-        <h2> Services Provided (3)</h2>
+        <h2> Services Provided ({user.services && user.services.length})</h2>
+
+
+        <div className="services">
+
+
+           {user.services && user.services.map((element) => (<div className="service">
+
+              <h3> {element.serviceTitle} </h3>
+              <img src={element.picUrls} width={300} />
+              <p> service Cost :{element.serviceCost} Rs</p>
+              <p> Discount :{element.discount} %</p>
+              <p> #{element.category}  </p>
+              <p> Region : {element.region}  </p>
+              <p> time of Completion : {element.timeOfCompletion}  </p>
+
+              <button> Book now  </button>
+
+
+
+           </div>))}
+
+
+        </div>
+
+
+
+
+
+
+
 
         <h3> Report Abuse</h3>
 
-        <h2>{user.services && user.services[0].serviceTitle}</h2>
+        
       </div>
     </div>
   );

@@ -1,12 +1,15 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(24, 4, 24);
+  background-color:  #0C1524;
   color: white;
+  height: 50px;
+  align-items: center;
 
   > ul {
     display: flex;
     list-style-type: none;
+    padding-left: 30px;
 
     > li {
       display: flex;
@@ -29,7 +32,7 @@
       position: fixed;
       left: 0;
       top: 37px;
-      background-color: rgba(24, 4, 24, 0.87);
+      background-color:  #0C1524;
       width: 200px;
       height: 100%;
       display: flex;
@@ -72,7 +75,7 @@
         top: 40px;
         right: 0;
         width: 200px;
-        background-color: rgba(24, 4, 24, 0.863);
+        background-color: #0C1524;
         height: 200px;
         display: flex;
         flex-direction: column;
@@ -81,11 +84,11 @@
         list-style-type: none;
 
         > li {
-          padding-bottom: 10px;
+          padding: 5px 20px;
           cursor: pointer;
 
           &:hover{
-            background-color: purple;
+            background-color: #FF8159;
           }
          
 

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import "./Form.css";
-import { ToastContainer } from "react-toastify";
 import { Link} from "react-router-dom";
 import { FaLock } from "react-icons/fa";
 import { Context } from "../context/Store";
@@ -22,14 +21,14 @@ const Register = () => {
 
   return (
     <>
-      <ToastContainer position="top-center" />
+    
 
-      <div className="container">
+     
         
         <div className="form-container">
 
           <div className="lock">
-            <FaLock style={{ fontSize: "28px", color: " purple" }} />
+            <FaLock/>
           </div>
 
           <h3> Register with us </h3>
@@ -66,13 +65,13 @@ const Register = () => {
               <Link to="/user/login"> Login </Link>
             </span>
 
-            <button onClick={(e)=>{handleRegister(e ,formData)}}> Register </button>
+            <button className="btn" onClick={(e)=>{handleRegister(e ,formData)}}> Register </button>
           
             <p>Notice: Read <Link> User Agreement and privacy policy</Link> before registering with us </p>
 
           </form>
         </div>
-      </div>
+      
     </>
   );
 };

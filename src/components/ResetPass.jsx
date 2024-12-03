@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./Form.css";
 import { FaLock } from "react-icons/fa";
-import { ToastContainer } from "react-toastify";
 import { Context } from "../context/Store";
 
 const ResetPass = () => {
@@ -20,11 +19,11 @@ const  {handleResetPass} = useContext(Context)
 
   return (
     <>
-      <ToastContainer />
-      <div className="container">
+    
+      
         <div className="form-container">
           <div className="lock">
-            <FaLock style={{ fontSize: "28px", color: " purple" }} />
+            <FaLock/>
           </div>
 
           <h3> Reset Your Password </h3>
@@ -56,10 +55,10 @@ const  {handleResetPass} = useContext(Context)
               the password
             </p>
 
-            <button onClick={(e)=>{handleResetPass(e , userId ,formData)}}> Change Password </button>
+            <button className="btn" onClick={(e)=>{handleResetPass(e , userId ,formData)}}> Change Password </button>
           </form>
         </div>
-      </div>
+     
     </>
   );
 };

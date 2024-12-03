@@ -8,7 +8,7 @@ const root = reactDom.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-    <ToastContainer/>
+    <ToastContainer position="top-center"/>
     <Store />
   </BrowserRouter>
 );

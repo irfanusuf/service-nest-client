@@ -1,8 +1,12 @@
 .footer {
 
-
-
-    text-align: center;
-    background-color: rgb(46, 40, 40);
+    
+    background-color:  #0C1524;
+    height: 30vh;
     color: antiquewhite;
+
+    >h4{
+        padding-top: 20px;
+        text-align: center;
+    }
 }

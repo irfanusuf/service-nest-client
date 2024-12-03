@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import "./Form.css";
-import {  ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 import { FaLock } from "react-icons/fa";
 import { Context } from "../context/Store";
@@ -20,12 +19,12 @@ const Login = () => {
   
   return (
     <>
-      <ToastContainer position="top-center" />
+     
 
-      <div className="container">
+      
         <div className="form-container">
           <div className="lock">
-            <FaLock style={{ fontSize: "28px", color: " purple" }} />
+            <FaLock/>
           </div>
 
           <h3> Login to your Account </h3>
@@ -56,7 +55,7 @@ const Login = () => {
               
 
 
-            <button onClick={(e)=>{handleLogin(e , formData)}}> Login </button>
+            <button className="btn" onClick={(e)=>{handleLogin(e , formData)}}> Login </button>
 
               <p> Or </p>
 
@@ -64,7 +63,7 @@ const Login = () => {
           
           </form>
         </div>
-      </div>
+      
     </>
   );
 };

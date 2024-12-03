@@ -8,7 +8,8 @@ import { HiDotsVertical } from "react-icons/hi";
 import { Context } from "../context/Store";
 
 const Navbar = () => {
-  const { username } = useContext(Context);
+  const { user } = useContext(Context);
+  const {username}  = user
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
 

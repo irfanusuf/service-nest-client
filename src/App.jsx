@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import "./global.css";
+import "./global.scss";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -26,7 +26,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="main">
+      <div className="container">
         <Routes>
           <Route path="*" element={<NopageFound />} />
           <Route path="/" element={<Home />} />

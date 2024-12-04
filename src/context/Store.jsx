@@ -46,7 +46,7 @@ const Store = () => {
         user: response.data.payload,
       }));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, []);
 
@@ -152,7 +152,7 @@ const Store = () => {
       }
     } catch (error) {
       toast.error("Server Error");
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -165,7 +165,7 @@ const Store = () => {
       
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     
     }
     finally{

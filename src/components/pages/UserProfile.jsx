@@ -81,13 +81,13 @@ const UserProfile = () => {
              : <button onClick={()=>{setShowForm(true)}}>
                 <FaPlus  style={{marginRight : "10px"}}/>Create New
               </button>}
-            </div>
+            </div>  
 
             <hr/>
           
             {!showForm && <div className="header">
-              <span onClick={()=>{toggleColor(true)}} className={showColor && "span"}> Active Services </span>
-              <span onClick={()=>{toggleColor(false)}} className={!showColor && "span"}> Inactive Services</span>
+              <span onClick={()=>{toggleColor(true)}} className={showColor ? "span" : ""}> Active Services </span>
+              <span onClick={()=>{toggleColor(false)}} className={!showColor ? "span" : ""}> Inactive Services</span>
               {/* <span onClick={()=>{toggleColor("teow")}} className="drafts"> Drafts </span> */}
             </div>}
 

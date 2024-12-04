@@ -25,7 +25,7 @@ const Home = (props) => {
 
       <button onClick={handleDarkMode}>
        
-        {enableDarkMode ? "Enable Light Mode" : "Enable Dark Mode"}{" "}
+        {enableDarkMode ? "Enable Light Mode" : "Enable Dark Mode"}
       </button>
     </div>
   );

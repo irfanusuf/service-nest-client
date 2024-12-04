@@ -1,20 +1,23 @@
 import React, { useContext, useEffect } from "react";
-import "./global.scss";
-import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Footer from "./components/Footer";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import ForgotPass from "./components/ForgotPass";
-import NopageFound from "./components/NopageFound";
-import ResetPass from "./components/ResetPass";
-import DeleteUser from "./components/DeleteUser";
-import SecureProfile from "./components/SecureProfile";
 import { Context } from "./context/Store";
-import UserProfile from "./components/UserProfile";
+import { Route, Routes } from "react-router-dom";
+import "./global.scss";
+
+import Navbar from "./components/sharedComponents/Navbar";
+import Footer from "./components/sharedComponents/Footer";
+
+import NopageFound from "./components/pages/NopageFound";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
+import Register from "./components/pages/Register";
+import Login from "./components/pages/Login";
+import ForgotPass from "./components/pages/ForgotPass";
+import ResetPass from "./components/pages/ResetPass";
+import DeleteUser from "./components/pages/DeleteUser";
+import SecureProfile from "./components/pages/SecureProfile";
+import UserProfile from "./components/pages/UserProfile";
+
 
 
 const App = () => {
@@ -29,9 +32,9 @@ const App = () => {
       <Navbar />
       <div className="container">
         <Routes>
-          <Route path="*" element={<NopageFound />} />
+          <Route path="*" element={<NopageFound/>} />
           <Route path="/" element={<Home />} />
-          {/* //guest routes  */}
+          {/* guest routes */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/user/register" element={<Register />} />

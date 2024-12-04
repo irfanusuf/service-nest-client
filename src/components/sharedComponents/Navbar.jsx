@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import "./Navbar.css";
+import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaInfo } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { LuContact } from "react-icons/lu";
 import { HiDotsVertical } from "react-icons/hi";
-import { Context } from "../context/Store";
+import { Context } from "../../context/Store";
+
 
 const Navbar = () => {
   const { user } = useContext(Context);

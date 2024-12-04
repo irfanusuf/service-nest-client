@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import "./UserProfile.css";
-import { Context } from "../context/Store";
+import "./UserProfile.scss";
+import { Context } from "../../context/Store";
 import { FaPlus } from "react-icons/fa";
 
-import CreateService from "../sharedComponents/CreateService";
+import CreateService from "../molecules/CreateService";
+import { RiArrowGoBackLine } from "react-icons/ri";
 // import IsAuthorised from "../utils/IsAuthorised";
 
 const UserProfile = () => {
@@ -73,9 +74,13 @@ const UserProfile = () => {
           <div className="right-block">
             
             <div className="services-header">
-              <span onClick={()=>{setShowForm(true)}}>
+             {showForm ? 
+             <button  onClick={()=>{setShowForm(false)}}>
+              <RiArrowGoBackLine style={{marginRight : "10px"}}/> Back 
+             </button>
+             : <button onClick={()=>{setShowForm(true)}}>
                 <FaPlus  style={{marginRight : "10px"}}/>Create New
-              </span>
+              </button>}
             </div>
 
             <hr/>

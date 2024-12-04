@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import "./Form.css";
+import "./Form.scss";
 import { FaLock } from "react-icons/fa";
-import { Context } from "../context/Store";
+import { Context } from "../../context/Store";
 
 const DeleteUser = () => {
   const { handleDeleteUser } = useContext(Context);

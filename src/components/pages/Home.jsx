@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Card from "../sharedComponents/Card";
 import "./Home.scss";
 
 
@@ -21,7 +20,6 @@ const Home = (props) => {
   return (
     <div className={enableDarkMode ? "container-dark" : "container-light"}>
       welcome {props.user}
-      <Card />
       the value of count is {count}
       <button onClick={handleIncrement}> increment </button>
 

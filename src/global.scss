@@ -44,11 +44,18 @@ button {
   background-color: $buttonBg;
   color: $primary;
   border: none;
-  font-weight: 700;
+  font-weight: 500;
+  transition: all 0.8s ease-in;
   
 
   &:hover {
-    opacity: 0.8;
+    background-color: #ee5f38;
+  }
+  &:active {
+    background-color: $textColor;
+  }
+  &:disabled{
+    opacity: 0.5;
   }
 }
 

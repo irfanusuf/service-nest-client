@@ -1,0 +1,121 @@
+.create-service {
+  width: 100%;
+  margin: 50px auto;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+
+  > h3 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #494444;
+    font-size: 24px;
+  }
+
+  > .main-block {
+    display: flex;
+    gap: 10px;
+
+    .guide {
+      flex: 1;
+
+      label {
+        font-weight: 600;
+        color: #494444;
+      }
+      p {
+        margin-top: 10px;
+        color: #756e6e;
+      }
+    }
+
+    .form {
+      flex: 2;
+    }
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  // .description {
+  // }
+
+  .category {
+    margin-top: 80px;
+  }
+
+  .time {
+    margin-top: 30px;
+  }
+
+  .region {
+    margin-top: 30px;
+  }
+
+  .cost {
+    margin-top: 30px;
+  }
+
+  .cost_discount {
+    display: flex;
+    input {
+      width: 200px;
+      margin-right: 20px;
+    }
+  }
+
+  .discount {
+    > p {
+      margin-top: 10px;
+      color: #756e6e;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input,
+    textarea {
+      width: 90%;
+      padding: 0 10px;
+      height: 40px;
+      font-size: 18px;
+      align-items: start;
+      border: none;
+      border: 1px solid #b3b3b3;
+      background-color: #fefaf0;
+      color: #494444;
+      border-radius: 3px;
+      transition: border-color 0.3s ease;
+
+      &::placeholder {
+        color: #b3b3b3;
+      }
+
+      &:focus {
+        border-color: #b3b3b3;
+        outline: none;
+      }
+    }
+
+    textarea {
+      height: 200px;
+    }
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: end;
+    margin-top: 50px;
+    padding-right: 40px;
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import "./Form.css";
+import "./Form.scss";
 import { Link } from "react-router-dom";
 import { FaLock } from "react-icons/fa";
-import { Context } from "../context/Store";
+import { Context } from "../../context/Store";
 
 const Login = () => {
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "../sharedComponents/Card";
-import "./Home.css";
+import "./Home.scss";
 
 
 const Home = (props) => {

@@ -1,5 +1,5 @@
 .profile-container {
-  width: 1400px;
+  width: 1500px;
   margin: auto;
 
   padding: 10px;
@@ -17,9 +17,12 @@
 }
 
 .left-block {
+  width: 400px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  
+
 
   .profile-block {
     width: 340px;
@@ -82,13 +85,14 @@
 }
 
 .right-block {
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 1000px;
   padding: 30px;
   background-color: #fefaf0;
 
   > .services-header {
     margin-bottom: 20px;
+    padding-left: 10px;
 
     span {
       background-color: #ff8159;;
@@ -106,6 +110,7 @@
   > .header {
     display: flex;
     margin-top: 10px;
+    padding-left: 10px;
 
     span {
       font-size: 16px;
@@ -116,7 +121,7 @@
     }
 
     >.span{
-      /* background-color: #ffc2b06c; */
+      background-color: #ffc2b06c;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
       
@@ -130,12 +135,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
-    /* background-color:#ffc2b06c; */
+    gap: 20px;
     width: 100%;
-    height: 100%;
+   
 
     > .service {
+      width: 300px;
+      padding: 10px;
+      
       > img {
         width: 300px;
         height: 300px;

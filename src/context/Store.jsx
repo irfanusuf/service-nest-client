@@ -156,6 +156,25 @@ const Store = () => {
     }
   };
 
+
+  const createServive = async (formData)=>{
+    try {
+      setStore((prev) => ({ ...prev, loading: true }));
+      const res = await api.post("/seller/create/service", formData);
+      if ((res.status = 200)) {
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    finally{
+      setStore((prev) => ({ ...prev, loading: false }));
+    }
+  }
+
+
+
+
   return (
     <Context.Provider
       value={{
@@ -168,6 +187,7 @@ const Store = () => {
         handleResetPass,
         handleDeleteUser,
         uploadProfileImage,
+        createServive
       }}
     >
       <App />

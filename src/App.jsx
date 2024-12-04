@@ -16,6 +16,7 @@ import SecureProfile from "./components/SecureProfile";
 import { Context } from "./context/Store";
 import UserProfile from "./components/UserProfile";
 
+
 const App = () => {
   const { fetchData, loading } = useContext(Context);
 

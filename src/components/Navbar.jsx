@@ -95,7 +95,7 @@ const Navbar = () => {
 
       <div className="userprofile">
         <p>
-          {" "}
+      
           {username ? (
             `Welcome ${username} `
           ) : (
@@ -104,7 +104,7 @@ const Navbar = () => {
                 navigate("/user/login");
               }}
             >
-              {" "}
+            
               Login
             </button>
           )}
@@ -115,7 +115,10 @@ const Navbar = () => {
 
           {showsideNav && (
             <ul>
-              <li> User profile</li>
+              <li 
+                 onClick={() => {
+                  navigate(`/user/user-profile`);
+                }}> User profile</li>
               <li>Logout</li>
               <li> Settings </li>
               <li

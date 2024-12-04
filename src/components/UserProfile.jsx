@@ -2,13 +2,16 @@ import React, { useContext, useState } from "react";
 import "./UserProfile.css";
 import { Context } from "../context/Store";
 import { FaPlus } from "react-icons/fa";
-import { TfiLayoutLineSolid } from "react-icons/tfi";
+
+import CreateService from "../sharedComponents/CreateService";
 // import IsAuthorised from "../utils/IsAuthorised";
 
 const UserProfile = () => {
   // IsAuthorised();
 
   const { user, uploadProfileImage } = useContext(Context);
+
+  const [showForm , setShowForm] = useState(false)
 
   const [showColor , toggleColor] = useState(true)
 
@@ -21,8 +24,12 @@ const UserProfile = () => {
   return (
     
       <div className="profile-container">
+
+
         <div className="upper-block">
+
           <div className="left-block">
+
             <div className="profile-block">
               <div className="profile-pic">
                 <img src={user.profilepicUrl} alt={user.username} width={200} />
@@ -66,27 +73,29 @@ const UserProfile = () => {
           <div className="right-block">
             
             <div className="services-header">
-              <span>
-                <FaPlus style={{marginRight : "10px"}}/>Create New
+              <span onClick={()=>{setShowForm(true)}}>
+                <FaPlus  style={{marginRight : "10px"}}/>Create New
               </span>
             </div>
 
             <hr/>
-
-            <div className="header">
+          
+            {!showForm && <div className="header">
               <span onClick={()=>{toggleColor(true)}} className={showColor && "span"}> Active Services </span>
               <span onClick={()=>{toggleColor(false)}} className={!showColor && "span"}> Inactive Services</span>
               {/* <span onClick={()=>{toggleColor("teow")}} className="drafts"> Drafts </span> */}
-            </div>
+            </div>}
 
            
+            {showForm ? <CreateService setShowForm ={setShowForm}/> :
 
+            
             <div className="services">
               {user.services &&
                 user.services.map((element) => (
                   <div className="service">
                     <h3> {element.serviceTitle} </h3>
-                    <img src={element.picUrls} width={300} />
+                    <img src={element.picUrls} width={300} alt={element.serviceTitle} />
                     <p> service Cost :{element.serviceCost} Rs</p>
                     <p> Discount :{element.discount} %</p>
                     <p> #{element.category} </p>
@@ -96,9 +105,15 @@ const UserProfile = () => {
                     <button> Book now </button>
                   </div>
                 ))}
-            </div>
-          </div>
+            </div>}
+
+
+          </div>  
         </div>
+
+
+
+
 
         <div className="lower-block">
           <h4> Report Abuse</h4>

@@ -2,13 +2,15 @@ import React, { useContext, useState } from "react";
 import "./CreateService.scss";
 import { Context } from "../../context/Store";
 import { ImForward } from "react-icons/im";
+import UploadServicePic from "./UploadServicePic";
 
 
-const CreateService = ({ setShowForm }) => {
+const CreateService = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
   const { createService } = useContext(Context);
   
   const [formData, setFormData] = useState({
     serviceTitle: "",
+    description : "",
     serviceCost: "",
     discount: "",
     timeOfCompletion: "",
@@ -24,10 +26,12 @@ const CreateService = ({ setShowForm }) => {
   return (
     <>
     
-        <div className="create-service">
+       {showUplaodForm ?  <UploadServicePic setShowForm={setShowForm} setShowUploadForm={setShowUploadForm} /> : <div className="create-service">
           <h3>Create a New Service</h3>
 
           <div className="main-block">
+
+
             <div className="guide">
               <div className="title">
                 <label>Your Service Title</label>
@@ -84,7 +88,7 @@ const CreateService = ({ setShowForm }) => {
                 />
 
                 <textarea
-                  name="serviceDescription"
+                  name="description"
                   onChange={handleChange}
                 ></textarea>
 
@@ -123,17 +127,23 @@ const CreateService = ({ setShowForm }) => {
               <div className="button-group">
                 <button
                   className="create"
-                  onClick={() => {
-                     createService(formData);
+                  onClick={async() => {
+                    const service =  await createService(formData);
+                 
+                    if(true){
                       setFormData({
                         serviceTitle: "",
+                        description : "",
                         serviceCost: "",
                         discount: "",
                         timeOfCompletion: "",
                         region: "",
                         category: "",
                       });
-                      setShowForm(false)
+                      // setShowForm(false)
+                      setShowUploadForm(true)
+                    }
+                     
                       
                   }}
                 >
@@ -141,8 +151,10 @@ const CreateService = ({ setShowForm }) => {
                 </button>
               </div>
             </div>
+
+
           </div>
-        </div>
+        </div>}
   
     </>
   );

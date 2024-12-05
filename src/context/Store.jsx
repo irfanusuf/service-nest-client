@@ -162,10 +162,13 @@ const Store = () => {
       const res = await api.post("/seller/create/service", formData);
       if (res.status === 200) {
         toast.success(res.data.message);
+        sessionStorage.setItem("serviceId" , res.data.payload._id )
+        return true
       
       }
     } catch (error) {
       console.error(error)
+      return false
     
     }
     finally{
@@ -173,6 +176,24 @@ const Store = () => {
     }
   }
 
+
+  const uploadServicePic = async (formData, serviceId) => {
+    try {
+      setStore((prev) => ({ ...prev, loading: true }));
+      const res = await api.post(
+        `/seller/upload/serviceImage?serviceId=${serviceId}`,
+        formData
+      );
+      if(res.status === 200){
+        return true
+      }
+    } catch (error) {
+      console.error(error);
+      return false
+    } finally {
+      setStore((prev) => ({ ...prev, loading: false }));
+    }
+  };
 
 
 
@@ -188,7 +209,8 @@ const Store = () => {
         handleResetPass,
         handleDeleteUser,
         uploadProfileImage,
-        createService
+        createService,
+        uploadServicePic
       }}
     >
       <App />

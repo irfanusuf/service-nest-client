@@ -1,24 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./CreateService.scss";
+import React, { useContext, useState } from "react";
 import { Context } from "../../context/Store";
 import { ImForward } from "react-icons/im";
-import UploadServicePic from "./UploadServicePic";
 
 
+const CreateForm = ({ setShowUploadForm }) => {
+  const { createService } = useContext(Context);
 
-const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
-  const { editService , getServicebyId , service} = useContext(Context);
-  
-  const [formData, setFormData] = useState(service);
-
-
-  useEffect(()=>{
-
-    getServicebyId("67498c1bd427d65de2fe4e58")
-
-  } , [getServicebyId])
-
-
+  const [formData, setFormData] = useState({
+    serviceTitle: "",
+    description: "",
+    serviceCost: "",
+    discount: "",
+    timeOfCompletion: "",
+    region: "",
+    category: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,13 +23,11 @@ const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
 
   return (
     <>
-    
-       {showUplaodForm ?  <UploadServicePic setShowForm={setShowForm} setShowUploadForm={setShowUploadForm} /> : <div className="create-service">
-          <h3>Edit your Service</h3>
+       
+        <div className="create-service">
+          <h3>Create a New Service</h3>
 
           <div className="main-block">
-
-
             <div className="guide">
               <div className="title">
                 <label>Your Service Title</label>
@@ -84,29 +78,22 @@ const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
             <div className="form">
               <form>
                 <input
-                  value={formData.serviceTitle}
                   className="title"
                   name="serviceTitle"
                   onChange={handleChange}
                 />
 
-                <textarea
-                 value={formData.description}
-                  name="description"
-                  onChange={handleChange}
-                ></textarea>
+                <textarea name="description" onChange={handleChange}></textarea>
 
-                <input value={formData.category} name="category" onChange={handleChange} />
+                <input name="category" onChange={handleChange} />
 
                 <input
-                  value={formData.timeOfCompletion}
                   className="time"
                   name="timeOfCompletion"
                   onChange={handleChange}
                 />
 
                 <input
-                value={formData.region}
                   className="region"
                   name="region"
                   onChange={handleChange}
@@ -114,7 +101,6 @@ const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
 
                 <div className=" cost cost_discount">
                   <input
-                  value={formData.serviceCost}
                     type="number"
                     name="serviceCost"
                     onChange={handleChange}
@@ -122,7 +108,6 @@ const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
 
                   <div className="discount">
                     <input
-                    value={formData.discount}
                       type="number"
                       name="discount"
                       onChange={handleChange}
@@ -135,36 +120,34 @@ const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
               <div className="button-group">
                 <button
                   className="create"
-                  onClick={async() => {
-                    const service =  await editService("67498c1bd427d65de2fe4e58" , formData);
-                 
-                    if(service){
+                  onClick={async () => {
+                    const service = await createService(formData);
+
+                    if (service) {
                       setFormData({
                         serviceTitle: "",
-                        description : "",
+                        description: "",
                         serviceCost: "",
                         discount: "",
                         timeOfCompletion: "",
                         region: "",
                         category: "",
                       });
-                      // setShowForm(false)
-                      // setShowUploadForm(true)
-                    }
                       
+                      setShowUploadForm(true);
+                    }
                   }}
                 >
-                  Edit and continue <ImForward style={{ fontSize: "22px"  , marginLeft : "10px"}} />
+                  Save and continue{" "}
+                  <ImForward style={{ fontSize: "22px", marginLeft: "10px" }} />
                 </button>
               </div>
             </div>
-
-
           </div>
-        </div>}
-  
+        </div>
+      
     </>
   );
 };
 
-export default EditForm;
+export default CreateForm;

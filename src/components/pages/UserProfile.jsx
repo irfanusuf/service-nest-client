@@ -15,10 +15,11 @@ const UserProfile = () => {
   const { user, uploadProfileImage , deleteService } = useContext(Context);
 
   const [showForm , setShowForm] = useState(false)
-
   const [editForm , setEditForm] = useState(false)
-
   const [showUplaodForm , setShowUploadForm] = useState(false)
+
+
+
   const [showColor , toggleColor] = useState(true)
   const [image, setImage] = useState(null);
   const formData = new FormData(); // empty arrray
@@ -31,10 +32,7 @@ const UserProfile = () => {
   return (
     
       <div className="profile-container">
-
-
         <div className="upper-block">
-
           <div className="left-block">
 
             <div className="profile-block">
@@ -53,7 +51,7 @@ const UserProfile = () => {
                 }}
               />
 
-              <h2> Irfan Yousuf{user.username} </h2>
+              <h2> {user.username ? user.username : "Dummy User"} </h2>
 
               <p>Bio</p>
 
@@ -78,13 +76,16 @@ const UserProfile = () => {
           </div>
 
 
+          <div className="right-block"> 
 
 
-          <div className="right-block">
-            
             <div className="services-header">
              {showForm ? 
-             <button disabled ={showUplaodForm} onClick={()=>{setShowForm(false)}}>
+             <button disabled ={showUplaodForm}
+              onClick={()=>{
+              setShowForm(false)
+              setEditForm(false)
+             }}>
               <RiArrowGoBackLine style={{marginRight : "10px"}}/> Back 
              </button>
              : <button onClick={()=>{
@@ -105,11 +106,15 @@ const UserProfile = () => {
            
             {showForm ? 
             
-            <CreateService setShowForm ={setShowForm} showUplaodForm ={showUplaodForm} setShowUploadFor =
-            {setShowUploadForm} editForm ={editForm} setEditForm = {setEditForm} /> :
+            <CreateService
+             setShowForm ={setShowForm}
+             showUplaodForm ={showUplaodForm} 
+             setShowUploadForm ={setShowUploadForm} 
+             editForm ={editForm} 
+             setEditForm = {setEditForm} /> :
 
             
-              <div className="services">
+            <div className="services">
               {user.services &&
                 user.services.map((element) => (
                   <div className="service">
@@ -118,10 +123,25 @@ const UserProfile = () => {
                     <h3> {element.serviceTitle} </h3>  
 
 
-                    <span > <CiEdit onClick={()=>{
+
+                  <div className="icons">
+
+                    <span onClick={()=>{
                       setShowForm(true)
-                      setEditForm(true)}}/> </span>
-                    <span onClick={()=>{deleteService(element._id)}}> <MdDelete style={{color : "red"}}/></span>
+                      setEditForm(true)}}> 
+                       <CiEdit/> 
+                    </span>
+
+                      
+                    <span onClick={()=>{
+                      deleteService(element._id)
+                      }}> 
+                      <MdDelete style={{color : "red"}}/>
+                    </span>
+
+                  </div>
+              
+                 
 
                     </div>
            
@@ -135,7 +155,7 @@ const UserProfile = () => {
                     <button> Book now </button>
                   </div>
                 ))}
-              </div>
+            </div>
           
         
             }

@@ -142,6 +142,13 @@
       >.service-head{
         display: flex;
         justify-content: space-between;
+
+        >.icons{
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+        }
+
       }
       
       > img {

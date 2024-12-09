@@ -138,6 +138,11 @@
     > .service {
       width: 300px;
       padding: 10px;
+
+      >.service-head{
+        display: flex;
+        justify-content: space-between;
+      }
       
       > img {
         width: 300px;

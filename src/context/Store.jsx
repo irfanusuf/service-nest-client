@@ -13,27 +13,21 @@ const Store = () => {
     username: "",
     email: "",
     user: {},
+    service: {},
   });
 
-
   const verifyToken = useCallback(async () => {
-
     try {
       const res = await api.get("/user/isAuth");
-      if (res.status === 200 ) {  
-          return true
-        }
-        else{
-          return false
-        }
+      if (res.status === 200) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (error) {
-      console.log(error)
-
+      console.log(error);
     }
-   
-  } , []) ;
-
-
+  }, []);
 
   const fetchData = useCallback(async () => {
     try {
@@ -49,9 +43,6 @@ const Store = () => {
       console.error(error);
     }
   }, []);
-
-
-  
 
   const handleRegister = async (e, formData) => {
     e.preventDefault();
@@ -156,26 +147,28 @@ const Store = () => {
     }
   };
 
-  const createService = async (formData)=>{
+  const createService = async (formData) => {
     try {
       setStore((prev) => ({ ...prev, loading: true }));
       const res = await api.post("/seller/create/service", formData);
+
       if (res.status === 200) {
         toast.success(res.data.message);
-        sessionStorage.setItem("serviceId" , res.data.payload._id )
-        return true
-      
+        sessionStorage.setItem("serviceId", res.data.payload._id);
+        return true;
       }
     } catch (error) {
-      console.error(error)
-      return false
-    
-    }
-    finally{
+      console.error(error);
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
+      return false;
+    } finally {
       setStore((prev) => ({ ...prev, loading: false }));
     }
-  }
-
+  };
 
   const uploadServicePic = async (formData, serviceId) => {
     try {
@@ -184,16 +177,80 @@ const Store = () => {
         `/seller/upload/serviceImage?serviceId=${serviceId}`,
         formData
       );
-      if(res.status === 200){
-        return true
+      if (res.status === 200) {
+        return true;
       }
     } catch (error) {
       console.error(error);
-      return false
+      return false;
     } finally {
       setStore((prev) => ({ ...prev, loading: false }));
     }
   };
+
+  const deleteService = async (serviceId) => {
+    try {
+      setStore((prev) => ({ ...prev, loading: true }));
+      const res = await api.delete(
+        `/seller/delete/service?serviceId=${serviceId}`
+      );
+      if (res.status === 200) {
+        toast.success(res.data.message);
+
+        return true;
+      }
+    } catch (error) {
+      console.error(error);
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
+      return false;
+    } finally {
+      setStore((prev) => ({ ...prev, loading: false }));
+    }
+  };
+
+  const editService = async (serviceId, formData) => {
+    try {
+      setStore((prev) => ({ ...prev, loading: true }));
+      const res = await api.put(
+        `/seller/edit/service?serviceId=${serviceId}`,
+        formData
+      );
+
+      if (res.status === 200) {
+        toast.success(res.data.message);
+
+        return true;
+      }
+    } catch (error) {
+      console.error(error);
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
+      return false;
+    } finally {
+      setStore((prev) => ({ ...prev, loading: false }));
+    }
+  };
+
+  const getServicebyId = useCallback(async (serviceId) => {
+    try {
+      const res = await api.get(`/service?serviceId=${serviceId}`);
+
+      if (res.status === 200) {
+        setStore((prev) => ({ ...prev, service: res.data.payload }));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+
 
 
 
@@ -210,7 +267,10 @@ const Store = () => {
         handleDeleteUser,
         uploadProfileImage,
         createService,
-        uploadServicePic
+        uploadServicePic,
+        deleteService,
+        editService,
+        getServicebyId,
       }}
     >
       <App />

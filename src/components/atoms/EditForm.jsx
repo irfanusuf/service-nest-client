@@ -6,17 +6,20 @@ import { ImForward } from "react-icons/im";
 
 
 const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
+
   const { editService , getServicebyId , service} = useContext(Context);
   
   const [formData, setFormData] = useState(service);
 
+  const serviceId =  sessionStorage.getItem("serviceId")
+
 
   useEffect(()=>{
 
-    getServicebyId("67498c1bd427d65de2fe4e58")
+    getServicebyId(serviceId)
 
-  } , [getServicebyId])
-
+  } , [getServicebyId , serviceId])
+ 
 
 
   const handleChange = (e) => {
@@ -132,10 +135,31 @@ const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
               </form>
 
               <div className="button-group">
+
+
+
+
+
+              <button
+                  className="create"
+                  onClick={async() => {
+                    const service =  await editService(serviceId , formData);
+                 
+                    if(service){
+                   
+                      setShowForm(false)
+                    }
+                      
+                  }}
+                >
+                  Save  
+                </button>
+
                 <button
                   className="create"
                   onClick={async() => {
-                    const service =  await editService("67498c1bd427d65de2fe4e58" , formData);
+                    const service =  await editService(serviceId , formData);
+
                  
                     if(service){
                       setFormData({
@@ -155,6 +179,10 @@ const EditForm = ({ setShowForm , showUplaodForm , setShowUploadForm}) => {
                 >
                   Edit and continue <ImForward style={{ fontSize: "22px"  , marginLeft : "10px"}} />
                 </button>
+
+               
+
+
               </div>
             </div>
 

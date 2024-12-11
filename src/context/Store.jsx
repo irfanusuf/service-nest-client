@@ -251,6 +251,55 @@ const Store = () => {
   }, []);
 
 
+ const createorder =  async (serviceId) =>{
+
+  try {
+    setStore((prev) => ({ ...prev, loading: true }));
+    const res = await api.post(
+      `/customer/create/order?serviceId=${serviceId}`,
+    );
+
+    if (res.status === 200) {
+      toast.success(res.data.message);
+      const orderId = res.data.payload._id
+      navigate(`/order/payment/${orderId}`)
+
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+    return false;
+  } finally {
+    setStore((prev) => ({ ...prev, loading: false }));
+  }
+
+
+ }
+
+
+ const cancelOrder =  async (orderId) =>{
+
+  try {
+    
+    const res = await api.put(`/customer/cancel/order?orderId=${orderId}` )
+
+    if(res.status === 200){
+      toast.success(res.data.message)
+    }
+
+
+  } catch (error) {
+    console.log(error)
+  }
+
+ }
+
+ 
 
 
 
@@ -271,6 +320,8 @@ const Store = () => {
         deleteService,
         editService,
         getServicebyId,
+        createorder,
+        cancelOrder
       }}
     >
       <App />

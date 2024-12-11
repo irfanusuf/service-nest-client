@@ -17,6 +17,7 @@ import ResetPass from "./components/pages/ResetPass";
 import DeleteUser from "./components/pages/DeleteUser";
 import SecureProfile from "./components/pages/SecureProfile";
 import UserProfile from "./components/pages/UserProfile";
+import OrderPayment from "./components/pages/OrderPayment";
 
 
 
@@ -45,6 +46,10 @@ const App = () => {
           <Route path="/user/delete" element={<DeleteUser />} />
           <Route path="/user/secureprofile" element={<SecureProfile />} />
           <Route path="/user/user-profile"  element={<UserProfile/>}/>
+
+         {/* payment routes */}
+
+         <Route path="/order/payment/:orderId"  element={<OrderPayment/>}/>
         </Routes>
       </div>
       <Footer />

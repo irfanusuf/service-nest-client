@@ -7,12 +7,13 @@ import CreateService from "../molecules/CreateService";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
+
 // import IsAuthorised from "../utils/IsAuthorised";
 
 const UserProfile = () => {
-  // IsAuthorised();
-
-  const { user, uploadProfileImage , deleteService } = useContext(Context);
+  // IsAuthorised(); 
+ 
+  const { user, uploadProfileImage , deleteService , createorder } = useContext(Context);
 
   const [showForm , setShowForm] = useState(false)
   const [editForm , setEditForm] = useState(false)
@@ -115,7 +116,7 @@ const UserProfile = () => {
 
             
             <div className="services">
-              {user.services &&
+              {user.services ?
                 user.services.map((element) => (
                   <div className="service">
 
@@ -127,6 +128,7 @@ const UserProfile = () => {
                   <div className="icons">
 
                     <span onClick={()=>{
+                      sessionStorage.setItem("serviceId" , element._id)
                       setShowForm(true)
                       setEditForm(true)}}> 
                        <CiEdit/> 
@@ -152,9 +154,14 @@ const UserProfile = () => {
                     <p> Region : {element.region} </p>
                     <p> time of Completion : {element.timeOfCompletion} </p>
 
-                    <button> Book now </button>
+                    <button onClick={()=>{
+
+                       createorder(element._id)
+                   
+
+                    }} > Book now </button>
                   </div>
-                ))}
+                )) : <div> No Services</div> }
             </div>
           
         

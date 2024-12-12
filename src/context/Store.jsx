@@ -13,6 +13,7 @@ const Store = () => {
     username: "",
     email: "",
     user: {},
+    allServices : [],
     service: {},
   });
 
@@ -301,6 +302,19 @@ const Store = () => {
 
  
 
+ const getAllServices = useCallback(async () =>{
+
+  try {
+    
+    const res = await api.get("/services/all")
+    if(res.status ===200){
+      setStore((prev) => ({...prev , allServices : res.data.payload}))
+    }
+  } catch (error) {
+    console.error(error)
+  }
+
+ } , []) 
 
 
   return (
@@ -321,7 +335,8 @@ const Store = () => {
         editService,
         getServicebyId,
         createorder,
-        cancelOrder
+        cancelOrder,
+        getAllServices
       }}
     >
       <App />

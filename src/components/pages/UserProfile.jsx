@@ -20,6 +20,8 @@ const UserProfile = () => {
   const [showUplaodForm , setShowUploadForm] = useState(false)
 
 
+   const userId = user._id
+
 
   const [showColor , toggleColor] = useState(true)
   const [image, setImage] = useState(null);
@@ -123,8 +125,6 @@ const UserProfile = () => {
                     <div className="service-head">  
                     <h3> {element.serviceTitle} </h3>  
 
-
-
                   <div className="icons">
 
                     <span onClick={()=>{
@@ -154,12 +154,12 @@ const UserProfile = () => {
                     <p> Region : {element.region} </p>
                     <p> time of Completion : {element.timeOfCompletion} </p>
 
-                    <button onClick={()=>{
+                   {userId !== element.serviceProvider && <button onClick={()=>{
 
                        createorder(element._id)
                    
 
-                    }} > Book now </button>
+                    }} > Book now </button>}
                   </div>
                 )) : <div> No Services</div> }
             </div>

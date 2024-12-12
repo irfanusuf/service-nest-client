@@ -18,6 +18,8 @@ import DeleteUser from "./components/pages/DeleteUser";
 import SecureProfile from "./components/pages/SecureProfile";
 import UserProfile from "./components/pages/UserProfile";
 import OrderPayment from "./components/pages/OrderPayment";
+import Services from "./components/pages/Services";
+
 
 
 
@@ -48,7 +50,7 @@ const App = () => {
           <Route path="/user/user-profile"  element={<UserProfile/>}/>
 
          {/* payment routes */}
-
+          <Route path="/services" element={<Services/>} />
          <Route path="/order/payment/:orderId"  element={<OrderPayment/>}/>
         </Routes>
       </div>

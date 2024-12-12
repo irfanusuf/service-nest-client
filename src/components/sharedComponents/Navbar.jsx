@@ -36,6 +36,10 @@ const Navbar = () => {
           {" "}
           <Link to="/contact"> Contact </Link>{" "}
         </li>
+        <li>
+          {" "}
+          <Link to="/services"> Services </Link>{" "}
+        </li>
       </ul>
 
       <div className="menubar " onClick={handleNav}>

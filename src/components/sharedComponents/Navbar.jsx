@@ -6,6 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { LuContact } from "react-icons/lu";
 import { HiDotsVertical } from "react-icons/hi";
 import { Context } from "../../context/Store";
+import logo from "../../assets/logo.svg"
 
 
 const Navbar = () => {
@@ -23,24 +24,10 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <ul>
-        <li>
-          {" "}
-          <Link to="/"> Home </Link>{" "}
-        </li>
-        <li>
-          {" "}
-          <Link to="/about"> About </Link>{" "}
-        </li>
-        <li>
-          {" "}
-          <Link to="/contact"> Contact </Link>{" "}
-        </li>
-        <li>
-          {" "}
-          <Link to="/services"> Services </Link>{" "}
-        </li>
-      </ul>
+
+
+
+
 
       <div className="menubar " onClick={handleNav}>
         <FaBars />
@@ -92,6 +79,33 @@ const Navbar = () => {
         )}
       </div>
 
+        <div className="logo">
+
+          <img src= {logo} width={300}/>
+        </div>
+
+
+
+      <ul>
+        <li>
+          {" "}
+          <Link to="/"> Home </Link>{" "}
+        </li>
+        <li>
+          {" "}
+          <Link to="/about"> About </Link>{" "}
+        </li>
+        <li>
+          {" "}
+          <Link to="/contact"> Contact </Link>{" "}
+        </li>
+        <li>
+          {" "}
+          <Link to="/services"> Services </Link>{" "}
+        </li>
+      </ul>
+
+
 
 
 
@@ -138,6 +152,9 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
+
+
     </div>
   );
 };

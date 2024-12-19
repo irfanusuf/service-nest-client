@@ -13,7 +13,7 @@ import { CiEdit } from "react-icons/ci";
 const UserProfile = () => {
   // IsAuthorised(); 
  
-  const { user, uploadProfileImage , deleteService , createorder } = useContext(Context);
+  const { user, uploadProfileImage , deleteService , createorder , activateService} = useContext(Context);
 
   const [showForm , setShowForm] = useState(false)
   const [editForm , setEditForm] = useState(false)
@@ -160,6 +160,7 @@ const UserProfile = () => {
                    
 
                     }} > Book now </button>}
+                    <button onClick={()=>{activateService(element._id)}}> Activate Service </button>
                   </div>
                 )) : <div> No Services</div> }
             </div>

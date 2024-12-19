@@ -1,10 +1,30 @@
+$tertiary : #0C1524;
+$seconday :#494444;
+$primary : #FEFAF0;
+$textColor : #E53737;
+$TextBg : #FFC2B0;
+$buttonBg: #FF8159;
+$spanBg : #242C3A;
+
+
+
+
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color:  #0C1524;
-  color: white;
-  height: 50px;
+  background-color: $primary;
+  color: #0C1524;
+
+
+  height: 60px;
   align-items: center;
+
+
+  >.logo{
+    >img{
+      padding-left: 100px;
+    }
+  }
 
   > ul {
     display: flex;
@@ -15,7 +35,7 @@
       display: flex;
       margin-right: 20px;
       > a {
-        color: white;
+        color: #0C1524;
         text-decoration: none;
       }
     }
@@ -100,6 +120,13 @@
 
 @media screen and (max-width: 500px) {
   .navbar {
+
+
+    >.logo{
+      >img{
+        padding-left: 30px ;
+      }
+    }
     > ul {
       display: none;
     }

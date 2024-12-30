@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import "./Services.scss";
 import { Context } from "../../context/Store";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const { getAllServices, allServices, createorder } = useContext(Context);
@@ -27,20 +28,31 @@ const Services = () => {
                 width={300}
                 alt={element.serviceTitle}
               />
-              <p> service Cost :{element.serviceCost} Rs</p>
+              <div className="service-body">
+              <p> Service Cost :{element.serviceCost} Rs</p>
               <p> Discount :{element.discount} %</p>
               <p> #{element.category} </p>
               <p> Region : {element.region} </p>
-              <p> time of Completion : {element.timeOfCompletion} </p>
 
+              <p> Time of Completion : {element.timeOfCompletion} </p>
+
+
+              <span> {!element.isActive && "Service Unavailable "} </span>
+
+              <p> <Link> Reviews ({element.reviews.length})   </Link>  </p>
+              <p> <Link> Give Your Review   </Link>  </p>
+              </div>
+       
               <button
                 onClick={() => {
                   createorder(element._id);
                 }}
               >
-                {" "}
-                Book now{" "}
+           
+                Book now
               </button>
+
+
             </div>
           ))
         ) : (

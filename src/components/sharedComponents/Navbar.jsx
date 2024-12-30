@@ -27,8 +27,6 @@ const Navbar = () => {
 
 
 
-
-
       <div className="menubar " onClick={handleNav}>
         <FaBars />
 
@@ -81,7 +79,7 @@ const Navbar = () => {
 
         <div className="logo">
 
-          <img src= {logo} width={300}/>
+          <img src= {logo} width={300} alt="some pic"/>
         </div>
 
 
@@ -139,7 +137,7 @@ const Navbar = () => {
                   navigate(`/user/user-profile`);
                 }}> User profile</li>
               <li>Logout</li>
-              <li> Settings </li>
+              <li>Settings </li>
               <li
                 onClick={() => {
                   navigate(`/user/delete/${userId}`);

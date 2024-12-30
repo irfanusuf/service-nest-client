@@ -160,7 +160,16 @@ const UserProfile = () => {
                    
 
                     }} > Book now </button>}
-                    <button onClick={()=>{activateService(element._id)}}> Activate Service </button>
+
+
+                    <button onClick={()=>{activateService(element._id)}}> 
+
+                      {element.isActive ? "Deactivate" : "Activate Service"} 
+                      
+                    </button>
+
+
+
                   </div>
                 )) : <div> No Services</div> }
             </div>

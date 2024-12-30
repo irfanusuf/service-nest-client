@@ -58,7 +58,12 @@ const Store = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Server Error. Try again After Sometime!");
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
+   
     }
   };
 
@@ -79,7 +84,11 @@ const Store = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Server Error. Try again After Sometime!");
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
     } finally {
       setStore((prev) => ({ ...prev, loading: false }));
     }
@@ -98,6 +107,12 @@ const Store = () => {
       }
     } catch (error) {
       console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+    return false;
     }
   };
 
@@ -111,11 +126,12 @@ const Store = () => {
       }
     } catch (error) {
       console.error(error);
-      if (error.response.status === 500) {
-        toast.error("Server Error");
-      } else if (error.response.status === 400) {
-        toast.error("Bad Request");
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
       }
+     
     }
   };
 
@@ -133,6 +149,12 @@ const Store = () => {
       }
     } catch (error) {
       console.error(error);
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
+     
     }
   };
 
@@ -143,8 +165,13 @@ const Store = () => {
         toast.success(res.data.message);
       }
     } catch (error) {
-      toast.error("Server Error");
       console.error(error);
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
+ 
     }
   };
 
@@ -183,7 +210,12 @@ const Store = () => {
       }
     } catch (error) {
       console.error(error);
-      return false;
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+    return false;
     } finally {
       setStore((prev) => ({ ...prev, loading: false }));
     }
@@ -248,6 +280,12 @@ const Store = () => {
       }
     } catch (error) {
       console.error(error);
+      if (error.response && (error.response.status === 400 || 404 || 500)) {
+        toast.error(error.response.data.message || "server Error");
+      } else {
+        toast.error("An unexpected error occurred!");
+      }
+      
     }
   }, []);
 
@@ -267,7 +305,7 @@ const Store = () => {
 
       return true;
     }
-  } catch (error) {
+  } catch (error) { 
     console.error(error);
     if (error.response && (error.response.status === 400 || 404 || 500)) {
       toast.error(error.response.data.message || "server Error");
@@ -291,17 +329,23 @@ const Store = () => {
 
     if(res.status === 200){
       toast.success(res.data.message)
+      navigate("/services")
     }
 
 
   } catch (error) {
-    console.log(error)
+    console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+   
   }
 
  }
 
  
-
  const getAllServices = useCallback(async () =>{
 
   try {
@@ -311,13 +355,35 @@ const Store = () => {
       setStore((prev) => ({...prev , allServices : res.data.payload}))
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+    return false;
   }
 
  } , []) 
 
 
-  return (
+const activateService = async (serviceId) => {
+  try {
+    setStore((prev) => ({ ...prev, loading: true }));
+    const res = await api.get(`/seller/activate/service/?serviceId=${serviceId}`);
+    if (res.status === 200) {
+      toast.success(res.data.message);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  finally{
+    setStore((prev) => ({ ...prev, loading: false }));
+  }
+};
+
+
+  return (  
     <Context.Provider
       value={{
         ...store,
@@ -336,7 +402,8 @@ const Store = () => {
         getServicebyId,
         createorder,
         cancelOrder,
-        getAllServices
+        getAllServices,
+        activateService
       }}
     >
       <App />

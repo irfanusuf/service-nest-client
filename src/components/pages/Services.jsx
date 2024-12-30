@@ -43,14 +43,29 @@ const Services = () => {
               <p> <Link> Give Your Review   </Link>  </p>
               </div>
        
+
+              <div className=" buttons">
+                
               <button
                 onClick={() => {
                   createorder(element._id);
                 }}
               >
            
-                Book now
+                Details
               </button>
+
+
+              <button
+                onClick={() => {
+                  createorder(element._id);
+                }}
+              >
+           
+                 Book now
+              </button>
+              
+            </div>
 
 
             </div>

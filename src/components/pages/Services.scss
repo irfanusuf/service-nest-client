@@ -19,10 +19,16 @@
             padding: 10px;
             display: flex;
             flex-direction: column;
+            box-shadow: 2px 2px 10px 10px rgba(128, 128, 128, 0.363);
+            border-radius: 8px;
       
             >.service-head{
               display: flex;
               justify-content: space-between;
+
+              >h3{
+                margin: 10px 0;
+              }
       
               >.icons{
                 display: flex;
@@ -41,15 +47,29 @@
 
             >.service-body{
 
-                height: 120px;
+                height: 150px;
                 margin-top: 10px;
                 margin-bottom: 10px;
-                padding: 10px;
+                padding: 5px;
 
                 >span{
                     color: red;
                     margin-top: 10px;
                 }
+                >p{
+                    margin: 3px 0;
+                }
+            }
+
+
+            >.buttons{
+                margin-top: 20px;
+             display: flex;
+             justify-content: center;
+             gap: 10px;
+             >button{
+                width: 150px;
+             }
             }
 
           }

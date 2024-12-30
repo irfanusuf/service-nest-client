@@ -15,6 +15,8 @@ const Store = () => {
     user: {},
     allServices : [],
     service: {},
+    order : {},
+    loadComment : false
   });
 
   const verifyToken = useCallback(async () => {
@@ -299,7 +301,7 @@ const Store = () => {
     );
 
     if (res.status === 200) {
-      toast.success(res.data.message);
+      // toast.success(res.data.message);
       const orderId = res.data.payload._id
       navigate(`/order/payment/${orderId}`)
 
@@ -328,7 +330,7 @@ const Store = () => {
     const res = await api.put(`/customer/cancel/order?orderId=${orderId}` )
 
     if(res.status === 200){
-      toast.success(res.data.message)
+      // toast.success(res.data.message)
       navigate("/services")
     }
 
@@ -383,6 +385,100 @@ const activateService = async (serviceId) => {
 };
 
 
+
+const getOrder = async(orderId) =>{
+
+
+  try {
+    const res = await api.get(`/customer/fetch/order/?orderId=${orderId}`)
+    if(res.status ===200){
+      setStore((prev) => ({...prev , order : res.data.payload}))
+    }
+  } catch (error) {
+    console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+
+  }
+}
+
+
+
+const handleMakeSellerAccount = async (e, password) => {
+  e.preventDefault();
+
+  try {
+    const res = await api.post("/user/changeAccountType", { password: password });
+
+    if (res.status === 200) {
+      toast.success(res.data.message);
+      navigate("/");
+    } else {
+      toast.error(res.data.message);
+    }
+  } catch (error) {
+    console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+   
+  }
+};
+
+
+const handleLogout = async () => {
+
+  try {
+    const res = await api.get("/user/logout");
+
+    if (res.status === 200) {
+      toast.success(res.data.message);
+      window.location.href = "/";
+    } else {
+      toast.error(res.data.message);
+    }
+  } catch (error) {
+    console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    } 
+  }
+  
+};
+
+
+const handleSubmitReview = async (e , formData , serviceId) => {
+
+  try {
+    e.preventDefault()
+    setStore((prev) => ({ ...prev, loadComment: true }));
+    const res = await api.post(`/customer/add/review/?serviceId=${serviceId}`, formData);
+
+    if (res.status === 200) {
+      toast.success(res.data.message);
+    }
+  } catch (error) {
+    console.error(error);
+    if (error.response && (error.response.status === 400 || 404 || 500)) {
+      toast.error(error.response.data.message || "server Error");
+    } else {
+      toast.error("An unexpected error occurred!");
+    }
+   
+  }
+  finally{
+    setStore((prev) => ({ ...prev, loadComment: false }));
+  }
+};
+
+
   return (  
     <Context.Provider
       value={{
@@ -403,7 +499,11 @@ const activateService = async (serviceId) => {
         createorder,
         cancelOrder,
         getAllServices,
-        activateService
+        activateService,
+        getOrder,
+        handleMakeSellerAccount,
+        handleLogout,
+        handleSubmitReview
       }}
     >
       <App />

@@ -19,6 +19,7 @@ import SecureProfile from "./components/pages/SecureProfile";
 import UserProfile from "./components/pages/UserProfile";
 import OrderPayment from "./components/pages/OrderPayment";
 import Services from "./components/pages/Services";
+import MakeSellerAccount from "./components/pages/MakeSellerRequest";
 
 
 
@@ -33,7 +34,10 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <div className="gradient">
+        <div className="container">
+
+     
         <Routes>
           <Route path="*" element={<NopageFound/>} />
           <Route path="/" element={<Home />} />
@@ -44,15 +48,19 @@ const App = () => {
           <Route path="/user/login" element={<Login />} />
           <Route path="/user/forgotpass" element={<ForgotPass />} />
           <Route path="/user/resetPass/:userId" element={<ResetPass />} />
+          <Route path="/user/provideServices/request" element = {<MakeSellerAccount/>}/>
+
           {/* secure routes */}
           <Route path="/user/delete" element={<DeleteUser />} />
           <Route path="/user/secureprofile" element={<SecureProfile />} />
           <Route path="/user/user-profile"  element={<UserProfile/>}/>
 
+
          {/* payment routes */}
           <Route path="/services" element={<Services/>} />
          <Route path="/order/payment/:orderId"  element={<OrderPayment/>}/>
         </Routes>
+      </div>
       </div>
       <Footer />
     </>

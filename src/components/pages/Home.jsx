@@ -1,8 +1,12 @@
 import React from "react";
 import "./Home.scss";
 import WhatWeProvide from "../molecules/WhatWeProvide";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+
+  const navigate = useNavigate()
   return (
 
     <>
@@ -21,7 +25,9 @@ const Home = () => {
 
           <p> "For every challenge you face, there's a solution waiting to be discovered. Whether it’s a small hiccup or a big hurdle, we bring the best answers tailored to your needs. Stop stressing over problems—start embracing solutions that work!"</p>
 
-          <button className="btn"> Book Now</button>
+          <button className="btn" onClick={()=>{
+            navigate("/services")
+          }}> Book Now</button>
         </div>
       </div>
 
@@ -33,7 +39,7 @@ const Home = () => {
     </div>
 
 
-    <div className="whyUs">
+    {/* <div className="whyUs">
 
     <span>   meow</span>
 
@@ -41,9 +47,14 @@ const Home = () => {
 
     <span>   meow</span>
 
+    </div> */}
+
+    {/* <WhatWeProvide/> */}
+
+    <div className="whatweprovide">
+
+      djdjh
     </div>
-
-    <WhatWeProvide/>
 
 
     </>

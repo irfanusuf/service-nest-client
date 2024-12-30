@@ -4,8 +4,8 @@ import "./Form.scss";
 import { FaLock } from "react-icons/fa";
 import { Context } from "../../context/Store";
 
-const DeleteUser = () => {
-  const { handleDeleteUser } = useContext(Context);
+const MakeSellerAccount = () => {
+  const { handleMakeSellerAccount } = useContext(Context);
   const [password, setPass] = useState("");
 
 
@@ -15,14 +15,13 @@ const DeleteUser = () => {
      
         <div className="form-container">
           <div className="lock">
-            <FaLock style={{ fontSize: "28px", color: "orangeRed" }} />
+            <FaLock style={{ fontSize: "28px", color: " orangeRed" }} />
           </div>
 
-          <h3> Delete Your Account </h3>
+          <h3> Make Request For Seller's Account </h3>
 
           <span>
-            Are u sure u want to delete your account if yes Kindly proceed with
-            your password
+            Are u sure u want to request to change your account  into seller's account
           </span>
 
           <form>
@@ -37,11 +36,11 @@ const DeleteUser = () => {
 
             <button
               onClick={(e) => {
-                handleDeleteUser(e , password);
+                handleMakeSellerAccount(e , password);
               }}
             >
             
-              Delete
+              Make a request 
             </button>
           </form>
         </div>
@@ -50,4 +49,4 @@ const DeleteUser = () => {
   );
 };
 
-export default DeleteUser;
+export default MakeSellerAccount;

@@ -14,6 +14,7 @@ $spanBg : #242C3A;
   justify-content: space-between;
   background-color: $primary;
   color: #0C1524;
+  z-index: 2;
 
 
   height: 60px;
@@ -44,29 +45,42 @@ $spanBg : #242C3A;
   > .menubar {
     display: none;
     align-items: center;
-    font-size: 22px;
     z-index: 1;
     padding-left: 30px;
+    font-size: 22px;
 
     > ul {
       position: fixed;
       left: 0;
-      top: 37px;
+      top: 50px;
       background-color:  #0C1524;
       width: 200px;
       height: 100%;
       display: flex;
       flex-direction: column;
       align-items: left;
-      padding-top: 50px;
+      padding-top: 20px;
+     
 
       > li {
         list-style-type: none;
+        cursor: pointer;
         padding: 10px;
+        padding-left: 30px;
+        display: flex;
+        align-items:baseline;
+        color: #E53737;
+        font-size: 16px;
+        font-style: italic;
+        
         > span {
+          color: #FEFAF0;
+
           > a {
             color: white;
             text-decoration: none;
+            font-size: small;
+            padding-left: 10px;
           }
         }
       }
@@ -95,7 +109,7 @@ $spanBg : #242C3A;
         top: 40px;
         right: 0;
         width: 200px;
-        background-color: #0C1524;
+        background-color: $tertiary;
         height: 200px;
         display: flex;
         flex-direction: column;
@@ -125,7 +139,7 @@ $spanBg : #242C3A;
 
     >.logo{
       >img{
-        padding-left: 30px ;
+        padding-left: 5px ;
       }
     }
     > ul {
@@ -137,6 +151,10 @@ $spanBg : #242C3A;
     }
 
     > .userprofile {
+
+      >p{
+        display: none;
+      }
       > .dropdown {
         display: none;
       }

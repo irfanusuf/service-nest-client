@@ -21,20 +21,34 @@ $spanBg : #242C3A;
 
 .container {
   min-height: 90vh;
-  z-index: -2;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  // background: linear-gradient(
-  //   to bottom right,
-  //   rgba(186, 104, 200, 0.192) , /* Soft purple-pink in the top left */
-  //   rgba(255, 194, 176, 0.295) 30%, /* TextBg */
-  //   rgba(255, 128, 89, 0.267) 50%, /* ButtonBg */
-  //   rgba(254, 250, 240, 0.521) 80%, /* Primary */
-  //   rgba(73, 68, 68, 0.164) /* Secondary */
-  // );
 
+
+}
+
+// .gradient{
+
+//   background: linear-gradient(
+//     to bottom right,
+//     rgba(186, 104, 200, 0.192) , /* Soft purple-pink in the top left */
+//     rgba(255, 194, 176, 0.295) 30%, /* TextBg */
+//     rgba(255, 128, 89, 0.267) 50%, /* ButtonBg */
+//     rgba(254, 250, 240, 0.521) 80%, /* Primary */
+//     rgba(73, 68, 68, 0.164) /* Secondary */
+//   );
+
+// }
+
+
+
+
+h1,h2,h3 ,p{
+  color: $seconday;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 button {

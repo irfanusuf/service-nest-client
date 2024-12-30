@@ -2,6 +2,7 @@
 
     width: 80%;
     margin: auto;
+    margin-top: 30px;
 
     >h1{
         text-align: center;
@@ -13,6 +14,8 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
+        margin-bottom: 20px;
+       
        
         > .service {
             width: 300px;
@@ -23,11 +26,12 @@
             border-radius: 8px;
       
             >.service-head{
+
               display: flex;
               justify-content: space-between;
 
               >h3{
-                margin: 10px 0;
+                margin: 20px 0;
               }
       
               >.icons{
@@ -56,9 +60,7 @@
                     color: red;
                     margin-top: 10px;
                 }
-                >p{
-                    margin: 3px 0;
-                }
+              
             }
 
 

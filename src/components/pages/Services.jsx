@@ -46,14 +46,9 @@ const Services = () => {
 
               <div className=" buttons">
                 
-              <button
-                onClick={() => {
-                  createorder(element._id);
-                }}
-              >
-           
+              <button>  
                 Details
-              </button>
+              </button> 
 
 
               <button
